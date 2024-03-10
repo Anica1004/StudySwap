@@ -86,6 +86,7 @@ router.get('/user_request', async (req, res) => {
 
     try {
         user_request(username, canTeach, wantToLearn, volunteer, inPerson, online);
+        console.log(username);
         res.status(201).send(); // Send a 201 Created response with no content
     } catch (error) {
         console.error('Error updating user to database:', error);

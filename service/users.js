@@ -1,4 +1,11 @@
-
+const getUser = async (req,res,next)=>{
+    try {
+      const user = await User.findById(req.params.id);
+      res.status(200).json(user);
+    } catch (err) {
+      next(err);
+    }
+};
 
 const createUser = async (req, res, next) => {
     const newHotel = new User(req.body);
@@ -8,9 +15,10 @@ const createUser = async (req, res, next) => {
     } catch (err) {
       next(err);
     }
-  };
+};
 
 module.exports =  {
+    getUser,
     createUser};
 
 // const { fetchAllUsers } = require('../model/User');

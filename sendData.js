@@ -4,23 +4,13 @@ async function postData(url = "", data = {}) {
     // Default options are marked with *
   
     console.log(JSON.stringify(data));
-    const response = await fetch(url + "?"+ new URLSearchParams(data) 
-    //   method: "GET", // *GET, POST, PUT, DELETE, etc.
-    //   //mode: "no-cors",
-    //   headers: {
-    //     //"Accept": "application/json",
-
-    //     "Content-Type": "application/json",
-    //     // 'Content-Type': 'application/x-www-form-urlencoded',
-    //   },
-    //   body: JSON.stringify(data), // body data type must match "Content-Type" header
-     );
+    const response = await fetch(url + "?"+ new URLSearchParams(data));
     return response.json(); // parses JSON response into native JavaScript objects
     
   }
   
 
-  function registerUser(event)
+  async function registerUser(event)
   {
     var password = document.getElementById("password").value;
     var repeatPassword = document.getElementById("repeatPassword").value;
@@ -31,7 +21,7 @@ async function postData(url = "", data = {}) {
         alert("Password does not match! Try Again!");
      }else{
       var data = { email: email, password: password };
-        postData("http://localhost:3001/make_user", data).then((data) => {
+        postData("http://localhost:3001/make_user", data).then(async (data) => {
             console.log(data); // JSON data parsed by `data.json()` call
             localStorage.setItem("username", data.username);
             //localStorage.setItem("username", data.username)
@@ -53,10 +43,10 @@ async function postData(url = "", data = {}) {
   {
     var email = document.getElementById("userEmail").value;
     var password = document.getElementById("password").value;
-        postData("http://localhost:3001/login_user", { username: username, email: email, password: password }).then((data) => {
+        postData("http://localhost:3001/login_user", { email: email, password: password }).then(async (data) => {
             console.log(data); // JSON data parsed by `data.json()` call
             localStorage.setItem("username", data);
-            username = localStorage.getItem("username"); 
+            username = await localStorage.getItem("username"); 
             console.log(username);
           });
           

@@ -124,7 +124,7 @@ async function user_request( username, canTeach, inPerson, online) {
 
 async function fetchAllUsers() {
     try {
-        const usersCollection = admin.firestore().collection('users');
+        const usersCollection = firestoreDb.collection('users');
         const snapshot = await usersCollection.get();
         const allUsers = [];
 

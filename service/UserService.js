@@ -42,24 +42,32 @@ const transporter = nodemailer.createTransport({
 });
 
 async function sendEmailNotif(matches) {
+    const { mentor, mentees } = match;
+    
     for (const match of matches) {
+        const { mentor, mentees } = match;
+
+        // Prepare email text
+        let emailText = 'Potential mentees:\n';
+        mentees.forEach(mentee => {
+            emailText += `${mentee.email}\n`;
+        });
+
         // Setup email data
         const mailOptions = {
             from: 'hackathoncmd@gmail.com',
-            to: match.user.email,
+            to: mentor.email, // Corrected accessing mentor's email
             subject: 'Test Email',
-            text: match.potentialMentees
+            text: emailText // Corrected accessing mentees' emails
         };
 
-        // Send email
-        transporter.sendMail(mailOptions, function(error, info) {
-            if (error) {
-                console.error('Error occurred:', error);
-            } else {
-                console.log('Email sent:', info.response);
-            }
-        });
-     
+        // Send email (awaiting the operation)
+        try {
+            const info = await transporter.sendMail(mailOptions);
+            console.log('Email sent:', info.response);
+        } catch (error) {
+            console.error('Error occurred:', error);
+        }
     }
 }
 

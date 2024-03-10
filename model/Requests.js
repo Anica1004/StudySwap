@@ -1,4 +1,6 @@
-const admin = require('firebase-admin');
+const admin = require('../firebase');
+const { firestoreDb } = require('../firebase.js');
+
 
 class Request {
     constructor(email, wantToLearn) {

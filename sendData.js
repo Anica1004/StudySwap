@@ -86,6 +86,7 @@ function profileUser(event) {
   var selectedCourses = [];
   var tagsContainer = document.getElementById("tagsContainer");
   var tags = tagsContainer.getElementsByClassName("tag");
+  console.log(volunteer);
   for (var i = 0; i < tags.length; i++) {
       var courseText = tags[i].textContent.trim();
       var spaceIndex = courseText.lastIndexOf(" ");

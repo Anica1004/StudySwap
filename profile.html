@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Profile Page</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,10 +35,12 @@
             <br>
             <label class="description-label">Will you be applying as a volunteer or an exchange tutor?: </label>    
             <br>
+            <div id = "checkThem">
         <label for = "volunteer">Volunteer</label>
         <input type= "checkbox" name = "volunteer" id = "volunteer" value = "volunteer">
         <label for = "exchange">Tutor Exchange</label>
         <input type= "checkbox" name = "exchange" id = "exchange" value = "exchange">
+            </div>
         <br>
         <br>
        
@@ -45,7 +48,7 @@
         <div class="form-tutor" id = "courseSelection">
             <label class="description-label">Please select all courses in which you are knowledgeable and capable of instructing: </label>
             <br>
-            <label class="description-label" id = "smallLabel">(click on the course to delete added courses) </label>   
+            <label class="description-label" id = "smallLabel">(click on the added course to delete) </label>   
             <br>
             <br>
             <label for="courseName">Select a Course Name:</label>

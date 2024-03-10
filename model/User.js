@@ -2,10 +2,13 @@ const { randomUUID } = require('crypto');
 const admin = require('firebase-admin');
 const { uploadProcessedData } = require('./firebase');
 import {v4 as uuidv4} from 'uuid';
+const admin = require('./firebase');
+
 
 class User {
     constructor(email, username, password, canTeach, wantToLearn, volunteer, inPerson, online) {
-        this.email = email;
+        this.username = username; // registration / login
+        this.email = email; // registration / login
         this.password = password;
         this.canTeach = canTeach; // array of courses
         this.wantToLearn = wantToLearn; // array of courses
@@ -45,7 +48,7 @@ async function make_user(email, password) {
     let myuuid = uuidv4();
 
     const userData = {
-        uuid: myuuid,
+        username: myuuid,
         email: email,
         password: password,
       };
@@ -58,16 +61,34 @@ async function make_user(email, password) {
         } catch (error) {
         console.log(error);
     }
-
 }
 
-async function update_user( username, canTeach, wantToLearn, volunteer, inPerson, online) {
+async function login_user (email, password) {
+
+    const users = fetchAllUsers();
+
+    for (const user of users) {
+        const user = await User.find({ email: user.email });
+        
+    }
+
+
+      try {
+        const docRef = firestoreDb.collection('users').doc(myuuid);
+        let dataUpdated = await docRef.set(userData);
+        console.log(dataUpdated);
+        return userData.uuid;
+        } catch (error) {
+        console.log(error);
+    }
+}
+
+
+async function user_profile( username, canTeach, volunteer) {
     const userData = {
         canTeach: canTeach,
-        wantToLearn: wantToLearn,
         volunteer: volunteer,
-        inPerson: inPerson,
-        online: online
+
       };
 
       try {
@@ -78,9 +99,26 @@ async function update_user( username, canTeach, wantToLearn, volunteer, inPerson
         } catch (error) {
         console.log(error);
     }
-      
-
 }
+
+async function user_request( username, canTeach, inPerson, online) {
+    const userData = {
+        canTeach: canTeach,
+        inPerson: inPerson,
+        online: online
+
+      };
+
+      try {
+        const docRef = firestoreDb.collection('users').doc(username);
+        let dataUpdated = await docRef.set(userData);
+        console.log(dataUpdated);
+        return userData.uuid;
+        } catch (error) {
+        console.log(error);
+    }
+}
+
 
 async function fetchAllUsers() {
     try {
@@ -100,4 +138,4 @@ async function fetchAllUsers() {
     }
 }
 
-module.exports = { User, fetchAllUsers, make_user, update_user };
+module.exports = { User, fetchAllUsers, make_user, user_request, user_profile, login_user };

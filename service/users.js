@@ -1,16 +1,34 @@
-const getUser = async (req,res,next)=>{
-    try {
-      const user = await User.findById(req.params.id);
-      res.status(200).json(user);
-    } catch (err) {
-      next(err);
+const { v4: uuidv4 } = require('uuid');
+let myuuid = uuidv4();
+const users = db.collection('users').doc(myuuid);
+const doc = await users.get();
+if (!doc.exists) {
+  console.log('No such document!');
+} else {
+  console.log('Document data:', doc.data());
+}
+
+const getUser = (req,res,next)=>{
+    const { username } = req.params;
+    if (!username || (!username in users)) {
+        return res.sendStatus(404);
     }
+    res.status(200).send(username);
 };
 
+// const getUser = async (req,res,next)=>{
+//     try {
+//       const user = await User.findById(req.params.id);
+//       res.status(200).json(user);
+//     } catch (err) {
+//       next(err);
+//     }
+// };
+
 const createUser = async (req, res, next) => {
-    const newHotel = new User(req.body);
+    const newUser = new User(req.body);
     try {
-      const savedUser = await newHotel.save();
+      const savedUser = await newUser.save();
       res.status(200).json(savedUser);
     } catch (err) {
       next(err);

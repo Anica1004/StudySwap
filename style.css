@@ -132,4 +132,41 @@ button:hover {
     margin: 5px;
 }
 
+button {
+  background-color: #4c81c2;
+  text-align: center;
+}
+
+
+.main-img-container {
+  /* width: 600px; /* Desired width */
+  max-height: 500px; /* Maximum height */
+  overflow: hidden; /* Hide overflow if image exceeds container */
+  align-items: center;
+  justify-content:center;
+  display: flex; 
+}
+
+.main-img {
+  max-width: 100%; /* Ensure the image takes up full width of container */
+  height: auto; /* Automatically adjust height to maintain aspect ratio */
+  align-items: center;
+  justify-content:center;
+  display: flex;
+}
+
+.parallax {
+  /* The image used */
+  background-image: url("images/study-1968077_1280.jpg");
+
+  /* Set a specific height */
+  min-height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 

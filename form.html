@@ -22,7 +22,7 @@
     </nav>
 
     <h2>Find Tutor Match</h2>
-    <form id="myForm" action="/action_page.php" method="post">
+    <form id="myForm" action="/action_page.php" method="post" onSubmit= "return makeForm()">
          
         <label class="description-label">Select the Course You Need Help With: </label>
         <br>
@@ -48,5 +48,6 @@
       </form>
 
       <script src="form.js"></script>
+      <script src="sendData.js"></script>
 </body>
 </html>

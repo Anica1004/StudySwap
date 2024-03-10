@@ -16,11 +16,13 @@ async function postData(url = "", data = {}) {
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
     return response.json(); // parses JSON response into native JavaScript objects
+    
   }
   
   postData("http://localhost:3001/make_user", { answer: 42 }).then((data) => {
     console.log(data); // JSON data parsed by `data.json()` call
   });
+
 
   function registerUser(event)
   {
@@ -40,6 +42,7 @@ async function postData(url = "", data = {}) {
 
     return false; // prevent further bubbling of event
   }
+ 
 
   
   function loginUser(event)
@@ -48,9 +51,27 @@ async function postData(url = "", data = {}) {
     var password = document.getElementById("password").value;
         postData("http://localhost:3001/login_user", { email, password }).then((data) => {
             console.log(data); // JSON data parsed by `data.json()` call
+            localStorage.setItem("username", data);
+            username = localStorage.getItem("username"); 
+            console.log(username);
           });
+          
     return false; // prevent further bubbling of event
   }
+
+  function makeForm(event){
+    userName = "editLater" // edit this later 
+    var courseName = document.getElementById("courseName").value + document.getElementById("courseCode").value;
+    var inperson = document.getElementById("inperson").checked; 
+    var Online = document.getElementById("Online").checked; 
+
+    postData("http://localhost:3001/user_request", { username: userName, wantToLearn: courseName, inPerson: inperson, online: Online }).then((data) => {
+      console.log(data); // JSON data parsed by `data.json()` call
+    });
+return false; // prevent further bubbling of event
+}
+
+
 
 
 

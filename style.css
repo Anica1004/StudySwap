@@ -132,4 +132,9 @@ button:hover {
     margin: 5px;
 }
 
+button {
+  background-color: #4c81c2;
+  text-align: center;
+}
+
 

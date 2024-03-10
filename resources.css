@@ -21,3 +21,73 @@ nav ul li:hover{
     
 }
 
+.resource-grid {
+    display: flex;
+}
+
+.resource {
+    align-items: center;
+}
+
+.resource-picture {
+    width: 300px;
+    height: auto;
+    margin-right: 30px;
+}
+
+.title-btn {
+    background-color: #7fb9ff;
+    border: 5px solid #253e5c;
+    height:80px;
+    width:200px;
+    font-family: "sans-serif";
+    font-size: 16px;
+    color: #fff;
+}
+
+.title-btn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24);
+}
+
+.text-overlay {
+    position: absolute;
+    top: 78%; /* Adjust as needed */
+    left: 20%; /* Adjust as needed */
+    transform: translate(-50%, -50%);
+    color: white; /* Set text color */
+    z-index: 1;
+}
+
+.overlay-box {
+    position: absolute;
+    top: 65%;
+    left: 0;
+    width: 50%;
+    height: 30%;
+    opacity: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.main-img-container{
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    max-height: 600px;
+    margin-bottom: 20px;
+    overflow-x: auto; /* Allow horizontal overflow */
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+.main-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+
+
+

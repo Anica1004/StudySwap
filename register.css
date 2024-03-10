@@ -85,3 +85,64 @@ a {
 .cancelbtn:hover {
     opacity:1;
 }
+
+.main-img-container h1 {
+  position: relative;
+  font-size: 50px;
+  bottom: 1%;
+  left: 5%;
+}
+
+.main-img-container p {
+  position:relative;
+  font-size: 25px;
+  bottom: 300px;
+  left: 16px;
+}
+
+.main-img-container{
+  position: relative;
+  width: 70%;
+  margin-bottom: 20px;
+  overflow-x: auto; /* Allow horizontal overflow */
+  white-space: nowrap; /* Prevent line breaks */
+}
+
+.main-img-container img {
+  display: block;
+  max-width: 100%;
+  max-height:100%;
+  text-align: center;
+  z-index: 0;
+}
+
+.register-form {
+  position:relative;
+  /* bottom: -s400px; */
+  z-index: 1;
+}
+
+.overlay-box {
+  position: absolute;
+  top: 65%;
+  left: 0;
+  width: 50%;
+  height: 30%;
+  opacity: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  border: 3px solid white;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 78%; /* Adjust as needed */
+  left: 20%; /* Adjust as needed */
+  transform: translate(-50%, -50%);
+  color: white; /* Set text color */
+  z-index: 1;
+  margin-bottom: 10px;
+}
+
+
+

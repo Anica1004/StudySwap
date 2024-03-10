@@ -89,11 +89,7 @@ nav ul li:hover{
     white-space: nowrap; /* Prevent line breaks */
 }
 
-.main-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
+
 
 
 

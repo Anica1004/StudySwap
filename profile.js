@@ -107,9 +107,6 @@ function saveProfile() {
     }
 
     displaySelectedCourses(selectedCourses);
-    
-
-
 
     document.getElementById("profileForm").style.display = "none";
     document.getElementById("profileInfo").style.display = "block";
@@ -130,6 +127,8 @@ function displaySelectedCourses(courses) {
     }
 }
 
+
+
 function editProfile() {
     document.getElementById("profileForm").style.display = "block";
     document.getElementById("profileInfo").style.display = "none";
@@ -137,27 +136,3 @@ function editProfile() {
 
 
 
-
-function saveProfile() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var volunteer_checkbox = document.getElementById("volunteer");
-    var exchange_checkbox = document.getElementById("exchange");
-
-    document.getElementById("profileName").innerText = name;
-    document.getElementById("profileEmail").innerText = email;
-    if(volunteer_checkbox.checked){
-    document.getElementById("status").innerText = "Volunteer"; 
-    }else if (exchange_checkbox.checked){
-        document.getElementById("status").innerText = "Exchange"; 
-    }else{
-        document.getElementById("status").innerText = "Unknown"; 
-    }
-    document.getElementById("profileForm").style.display = "none";
-    document.getElementById("profileInfo").style.display = "block";
-}
-
-function editProfile() {
-    document.getElementById("profileForm").style.display = "block";
-    document.getElementById("profileInfo").style.display = "none";
-}

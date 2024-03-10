@@ -29,7 +29,6 @@ class User {
     toObject() {
         return {
             email: this.email,
-            username: this.username,
             password: this.password,
             canTeach: this.canTeach,
             wantToLearn: this.wantToLearn,
@@ -40,8 +39,22 @@ class User {
     }
 }
 
-async function newUser() {
-    
+async function newUser(email, password, canTeach, wantToLearn, volunteer, inPerson, online) {
+    // write to database :DDD
+    const usersCollection = admin.firestore().collection('users');
+
+    const userData = {
+        email: email,
+        password: password,
+        canTeach: canTeach,
+        wantToLearn: wantToLearn,
+        volunteer: volunteer,
+        inPerson: inPerson,
+        online: online
+      };
+
+      
+
 }
 
 async function fetchAllUsers() {

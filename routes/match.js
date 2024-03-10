@@ -7,7 +7,7 @@ router.get('/make_request', async (req, res) => {
     email = req.query.email;
     wantToLearn = req.query.wantToLearn;
     try {
-        make_request(email, wantToLearn);
+        makeRequest(email, wantToLearn);
         res.status(201).send(); // Send a 201 Created response with no content
     } catch (error) {
         console.error('Error adding request to database:', error);

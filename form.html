@@ -19,18 +19,36 @@
         </ul>
     </nav>
 
-    <h1>Form</h1>
-    <form action="/action_page.php" method="post">
+    <h2>Tutor Application Form</h2>
+    <form id="myForm" action="/action_page.php" method="post">
          
-        <label for="courseName">Select a course:</label>
+        <label id="courseHelp" for="myInput">Select the Course You Need Help With: </label>
+        <br>
+        <label for="courseName">Select a Course:</label>
         <select id="courseName" name="courseName">
           <option value="" disabled selected>Select a course</option>
         </select>
 
         <label for = "courseCode">Course Code: </label>
         <input type= "value" name = "courseCode" id = "courseCode">
-        <input type="submit" value="Submit">
-
+        <br>
+        <br>
+        <label>Only choose one option: </label>
+        <br>
+        <label for = "volunteer">Volunteer</label>
+        <input type= "checkbox" name = "volunteer" id = "volunteer" value = "volunteer">
+        <label for = "exchange">Tutor Exchange</label>
+        <input type= "checkbox" name = "exchange" id = "exchange" value = "exchange">
+        <br>
+        <br>
+        <label>You may choose multiple options: </label>
+        <br>
+        <label for = "Online">Online Tutoring </label>
+        <input type= "checkbox" name = "Online" id = "Online" value = "Online">
+        <label for = "inperson">In-Person Tutoring</label>
+        <input type= "checkbox" name = "inperson" id = "inperson" value = "inperson">
+        <br>
+    <input type="submit" value="Submit">
       </form>
 
       <script src="form.js"></script>

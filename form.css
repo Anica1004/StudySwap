@@ -21,3 +21,19 @@ nav ul li:hover{
     
 }
 
+h2{
+    text-align: center; 
+}
+
+#myForm {
+    border: 2px solid #999; 
+    border-radius: 5px; 
+    padding: 10px; 
+    display: block;
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+    margin-right: 200px; 
+    margin-left: 200px; 
+
+}

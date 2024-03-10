@@ -36,3 +36,20 @@ var courses = [
     option.text = course;
     select.appendChild(option);
   });
+
+  var volunteer_checkbox = document.getElementById("volunteer");
+  var exchange_checkbox = document.getElementById("exchange");
+
+  volunteer_checkbox.addEventListener("change", bothCheckedAlert);
+  exchange_checkbox.addEventListener("change", bothCheckedAlert);
+
+  function bothCheckedAlert() {
+    if (volunteer_checkbox.checked && exchange_checkbox.checked) {
+        volunteer_checkbox.checked = false;
+        exchange_checkbox.checked = false;
+        alert("Please check only one of the boxes");
+    }
+}
+
+
+

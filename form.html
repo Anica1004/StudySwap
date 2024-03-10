@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <title>Tutor Form Page</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="form.css">
+    <script src="form.js"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Form</a></li>
+            <li><a href="#">My Account</a>
+            <li><a href="#">Resources</a>
+        </ul>
+    </nav>
+
+    <h2>Find Tutor Match</h2>
+    <form id="myForm" action="/action_page.php" method="post">
+         
+        <label class="description-label">Select the Course You Need Help With: </label>
+        <br>
+        <label for="courseName">Select a Course Name:</label>
+        <select id="courseName" name="courseName">
+          <option value="" disabled selected>Select a course</option>
+        </select>
+
+        <label for = "courseCode">Course Code: </label>
+        <input type= "value" name = "courseCode" id = "courseCode">
+        <br>
+        <br>
+        <label class="description-label">Are you applying for online, in-person, or both types of tutoring?: </label>
+        <br>
+        <label for = "Online">Online Tutoring </label>
+        <input type= "checkbox" name = "Online" id = "Online" value = "Online">
+        <label for = "inperson">In-Person Tutoring</label>
+        <input type= "checkbox" name = "inperson" id = "inperson" value = "inperson">
+        <br>
+        <br>
+        <br>
+    <input type="submit" value="Submit" onclick="return confirm('Are you sure you want to submit the form?')">
+      </form>
+
+      <script src="form.js"></script>
+</body>
+</html>

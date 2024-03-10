@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profile Page</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="profile.css">
+    <script src="profile.js"></script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Form</a></li>
+            <li><a href="#">My Account</a>
+            <li><a href="#">Resources</a>
+        </ul>
+    </nav>
+    
+<div class="container">
+    <h1>User Profile</h1>
+    <div id="profileForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email">
+        
+        </div class = "form-tutor">
+            <br>
+            <label class="description-label">Will you be applying as a volunteer or an exchange tutor?: </label>    
+            <br>
+            <div id = "checkThem">
+        <label for = "volunteer">Volunteer</label>
+        <input type= "checkbox" name = "volunteer" id = "volunteer" value = "volunteer">
+        <label for = "exchange">Tutor Exchange</label>
+        <input type= "checkbox" name = "exchange" id = "exchange" value = "exchange">
+            </div>
+        <br>
+        <br>
+       
+
+        <div class="form-tutor" id = "courseSelection">
+            <label class="description-label">Please select all courses in which you are knowledgeable and capable of instructing: </label>
+            <br>
+            <label class="description-label" id = "smallLabel">(click on the added course to delete) </label>   
+            <br>
+            <br>
+            <label for="courseName">Select a Course Name:</label>
+            <select id="courseName" name="courseName">
+              <option value="" disabled selected>Select a course</option>
+            </select>
+            <label for = "courseCode">Course Code: </label>
+        <input type= "value" name = "courseCode" id = "courseCode">
+        <button onclick="addCourse()">Add Course</button>
+        <div id="tagsContainer"></div>
+        </div>
+        <div class="form-group">
+        </div>
+        <div class="form-group">
+            <button onclick="saveProfile()">Save Profile</button>
+        </div>
+    </div>
+    </div>
+    <div id="profileInfo" style="display: none;">
+        <div class="profile-info">
+            <p><strong>Name:</strong> <span id="profileName"></span></p>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+            <p><strong>Status:</strong> <span id="status"></span></p>
+            <div class="form-group" id="selectedCoursesSection">
+                <label for="selectedCourses">Selected Courses Eligible to Tutor:</label>
+                <div id="selectedCourses"></div>
+            </div>
+            <button onclick="editProfile()">Edit Profile</button>
+        </div>
+    </div>
+</div>
+
+
+<script src="profile.js"></script>
+    
+</body>
+</html>

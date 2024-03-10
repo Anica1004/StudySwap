@@ -1,9 +1,20 @@
 const express = require('express');
-const { make_request } = require('../model/requests');
-const { findMatchingTutors, sendEmailNotif } = require('../service/userService');
-const { make_user, user_profile, user_request, login_user } = require('../model/user');
+
+
+const { make_request } = require('../model/Requests');
+const { findMatchingTutors, sendEmailNotif } = require('../service/users');
+const { make_user, user_profile, user_request, login_user } = require('../model/User');
+
 const router = express(); 
 router.use(express.json()); 
+
+
+
+router.get("/", (req, res) => {
+    res.send("hello this is auth endpoint");
+})
+
+
 
 router.get('/make_request', async (req, res) => {
     username = req.query.username;

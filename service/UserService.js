@@ -1,28 +1,37 @@
-// userService.js
-import User from './user';
+import { fetchAllUsers } from './user';
+import { fetchAllRequests } from './requests';
 
-async function findMatchingTutors(desiredCourse, searchMode) {
+
+async function findMatchingTutors() {
     try {
+        const users = await fetchAllUsers();
+        const requests = await fetchAllRequests();
+        const matches = [];
 
-        const tutors = await User.find({ canTeach: desiredCourse });
-        tutors = findExchangeTarget(tutors);
+        for (const user of users) {
+            let potentialMentees =[];
+
+            if (user.volunteer) {
+                
+                potentialMentees = requests.filter(request => request.wantToLearn.some(subject => user.canTeach.includes(subject)));
+            } else {
+                const matchingMentees = requests.filter(request => request.wantToLearn.some(subject => user.canTeach.includes(subject)));
     
-        return tutors;
+                potentialMentees = matchingMentees.filter(mentee => {
+                    return mentee.canTeach.some(subject => user.wantToLearn.includes(subject));
+                });
+            }
+            
+            matches.push({ mentor: user, mentees: potentialMentees });
+        }
+
+        return matches;
     } catch (error) {
         console.error("Error finding matching tutors:", error);
-        throw error;
+        throw error; 
     }
 }
 
-async function findExchangeTarget(tutors) {
-    try {
 
-        const tutors = await User.find({ canTeach: desiredCourse });
-        return tutors;
-    } catch (error) {
-        console.error("Error finding matching tutors:", error);
-        throw error;
-    }
-}
 
 export { findMatchingTutors };

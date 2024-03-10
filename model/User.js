@@ -34,10 +34,19 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    matchNumbers: {
-
-    },
     
 });
 
 export default mongoose.model("User", userSchema);
+
+async function fetchAllUsers() {
+    try {
+        const allUsers = await User.find();
+        return allUsers;
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        throw error;
+    }
+}
+
+module.exports = { User, fetchAllUsers };

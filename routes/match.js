@@ -1,15 +1,17 @@
 import express from 'express';
-import { findMatchingTutors } from './userService';
+import { make_request } from './userService';
 
 const router = express.Router();
 
-router.get('/find-matching-tutors', async (req, res) => {
+router.get('/make_request', async (req, res) => {
     const desiredCourse = req.query.course;
+    const requestingUser = req.query.email; 
 
     try {
-        const matchingTutors = await findMatchingTutors(desiredCourse);
-        res.json(matchingTutors);
+        make_request(desiredCourse, requestingUser);
+        res.status(201).send(); // Send a 201 Created response with no content
     } catch (error) {
+        console.error('Error adding request to database:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });

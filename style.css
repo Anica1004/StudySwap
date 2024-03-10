@@ -1,8 +1,10 @@
+
 nav {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  background-color: rgb(129, 207, 224);
+  background-color: #88CCEE; /*color blind friendly*/
+  margin-bottom: 20px; 
 }
 
 nav img {
@@ -35,14 +37,13 @@ nav ul li a {
 }
 
 nav ul li:hover {
-  background-color: rgb(197, 239, 247);
+  background-color: #A1DEFD; /*color blind friendly*/
 }
 
 #login {
   margin-left: 550px; 
  
 }
-
 
 
 /*End of Navigation*/

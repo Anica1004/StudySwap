@@ -1,4 +1,51 @@
 
+nav {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #88CCEE; /*color blind friendly*/
+    margin-bottom: 20px; 
+  }
+  
+  nav img {
+    width: 50px;
+    height: auto;
+    margin-right: 20px; 
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  nav ul li {
+    margin-right: 20px; 
+  }
+  
+  nav ul li:last-child {
+    margin-right: 0; 
+  }
+  
+  nav ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 10px; 
+  }
+  
+  nav ul li:hover {
+    background-color: #A1DEFD; /*color blind friendly*/
+  }
+  
+  #login {
+    margin-left: 550px; 
+   
+  }
+
+
 .clearfix {
     margin-top: 20px;
 }
@@ -131,4 +178,10 @@ button {
   align-items: center;
   justify-content:center;
   display: flex;
+}
+
+
+#logo{
+  border-radius: 25%;
+  
 }

@@ -1,25 +1,51 @@
+nav {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgb(129, 207, 224);
+}
+
+nav img {
+  width: 50px;
+  height: auto;
+  margin-right: 20px; 
+}
+
 nav ul {
-    list-style-type: none;
-    background-color: rgb(129, 207, 224);
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 nav ul li {
-    display: inline-block;
-    position: relative; 
+  margin-right: 20px; 
+}
+
+nav ul li:last-child {
+  margin-right: 0; 
 }
 
 nav ul li a {
-    display: block;
-    padding: 15px 30px;
-    color: #fff;
-    text-decoration: none;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 10px; 
 }
-nav ul li:hover{
-    background-color: rgb(197, 239, 247); 
-    
+
+nav ul li:hover {
+  background-color: rgb(197, 239, 247);
 }
+
+#login {
+  margin-left: 550px; 
+ 
+}
+
+
+
+/*End of Navigation*/
 
 .clearfix {
     margin-top: 20px;
@@ -157,16 +183,31 @@ button {
 
 .parallax {
   /* The image used */
-  background-image: url("images/study-1968077_1280.jpg");
+  background-image: url("images/studying.jpg");
 
   /* Set a specific height */
-  min-height: 500px; 
-
+  min-height: 400px; 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
+  
 }
 
+#studySwap{
+  font-family: Snell Roundhand, cursive;
+  text-align: center;
+  font-size: 60px; 
+  padding-bottom: 25px;
+  padding-top: 50px; 
+  background-color: transparent;
+  text-shadow: 2px 2px 5px white;
+}
+  
 
+
+#logo{
+  border-radius: 25%;
+  
+}

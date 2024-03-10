@@ -21,7 +21,7 @@ router.post('/make_request', async (req, res) => {
 
 
 router.post('/make_user', async (req, res) => {
-    console.log(req.body); 
+    console.log(req); 
     // const email = req.body.email;
     // const password = req.body.password;
     // try {

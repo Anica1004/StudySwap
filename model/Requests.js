@@ -1,34 +1,55 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
+const admin = require('firebase-admin');
 
-const requestSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true
-    },
-    canTeach: {
-        type: Array,
-        required: true
-    },
-    wantToLearn: {
-        type: Array,
-        required: true
-    },
-    inPerson: {
-        type: Boolean,
-        required: true
-    },
-    online: {
-        type: Boolean,
-        required: true
-    },
-  
+class Request {
+    constructor(email, wantToLearn) {
+        this.email = email;
+        this.wantToLearn = wantToLearn;
+    }
 
-});
+    static async fromSnapshot(snapshot) {
+        const data = snapshot.data();
+        return new Request(
+            data.email,
+            data.wantToLearn,
 
-async function make_request(desiredCourse, requestingUser) {
-    
+        );
+    }
 
+    toObject() {
+        return {
+            email: this.email,
+            wantToLearn: this.wantToLearn,
+        };
+    }
 }
 
-export default mongoose.model("Request", requestSchema);
+async function fetchAllRequests() {
+
+    
+    try {
+        const requestsCollection = admin.firestore().collection('requests');
+        const snapshot = await requestsCollection.get();
+        const allRequests = [];
+
+        if (snapshot.empty) {
+            console.log('No requests found.');
+            return null; 
+        }
+
+        snapshot.forEach(doc => {
+            const request = Request.fromSnapshot(doc);
+            allRequests.push(request);
+        });
+
+        return allRequests;
+    } catch (error) {
+        console.error('Error fetching requests:', error);
+        throw error;
+    }
+}
+
+async function makeRequest(email, wantToLearn) {
+    new Request(email, wantToLearn);
+}
+
+module.exports = { Request, fetchAllRequests, makeRequest };

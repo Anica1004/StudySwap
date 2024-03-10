@@ -12,15 +12,18 @@
 
 <body>
     <nav>
+        <img src="images/logo.png" alt="Your Logo" id = "logo">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Form</a></li>
-            <li><a href="#">My Account</a>
-            <li><a href="#">Resources</a>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="form.html">Form</a></li>
+            <li><a href="profile.html">My Account</a>
+            <li><a href="resources.html">Resources</a>
+            <li id="login"><a href="login.html">Login</a></li>
         </ul>
     </nav>
     
 <div class="container">
+   
     <h1>User Profile</h1>
     <div id="profileForm">
         <div class="form-group">
@@ -33,31 +36,30 @@
         
         </div class = "form-tutor">
             <br>
-            <label class="description-label">Will you be applying as a volunteer or an exchange tutor?: </label>    
+            <label class="description-label">Will you be applying as a Volunteer or an Exchange Tutor?: </label>    
             <br>
             <div id = "checkThem">
-        <label for = "volunteer">Volunteer</label>
+        <label for = "volunteer" style="font-weight: bold;">Volunteer</label>
         <input type= "checkbox" name = "volunteer" id = "volunteer" value = "volunteer">
-        <label for = "exchange">Tutor Exchange</label>
+        <label for = "exchange" style="font-weight: bold;">Tutor Exchange</label>
         <input type= "checkbox" name = "exchange" id = "exchange" value = "exchange">
             </div>
         <br>
         <br>
        
-
         <div class="form-tutor" id = "courseSelection">
             <label class="description-label">Please select all courses in which you are knowledgeable and capable of instructing: </label>
             <br>
             <label class="description-label" id = "smallLabel">(click on the added course to delete) </label>   
             <br>
             <br>
-            <label for="courseName">Select a Course Name:</label>
+            <label for="courseName" style="font-weight: bold;">Select a Course Name:</label>
             <select id="courseName" name="courseName">
               <option value="" disabled selected>Select a course</option>
             </select>
             <label for = "courseCode">Course Code: </label>
         <input type= "value" name = "courseCode" id = "courseCode">
-        <button onclick="addCourse()">Add Course</button>
+        <button onclick="addCourse(); profileUser()">Add Course</button>
         <div id="tagsContainer"></div>
         </div>
         <div class="form-group">
@@ -79,10 +81,12 @@
             <button onclick="editProfile()">Edit Profile</button>
         </div>
     </div>
+
 </div>
 
 
 <script src="profile.js"></script>
+<script src="sendData.js"></script>
     
 </body>
 </html>

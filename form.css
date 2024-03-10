@@ -1,24 +1,48 @@
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #88CCEE; /*color blind friendly*/
+  margin-bottom: 20px; 
+}
+
+nav img {
+  width: 50px;
+  height: auto;
+  margin-right: 20px; 
+}
+
 nav ul {
-    list-style-type: none;
-    background-color: #88CCEE; /*color blind friendly*/
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 nav ul li {
-    display: inline-block;
-    position: relative; 
+  margin-right: 20px; 
+}
+
+nav ul li:last-child {
+  margin-right: 0; 
 }
 
 nav ul li a {
-    display: block;
-    padding: 15px 30px;
-    color: #fff;
-    text-decoration: none;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 10px; 
 }
-nav ul li:hover{
-    background-color: #A1DEFD; /*color blind friendly*/
-    
+
+nav ul li:hover {
+  background-color: #A1DEFD; /*color blind friendly*/
+}
+
+#login {
+  margin-left: 550px; 
+ 
 }
 
 
@@ -30,8 +54,6 @@ h2 {
   }
 
 #myForm {
-    border: 2px solid #999; 
-    border-radius: 5px; 
     padding: 10px; 
     display: block;
     width: auto;
@@ -39,7 +61,13 @@ h2 {
     text-align: center;
     margin-right: 200px; 
     margin-left: 200px; 
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    
 
+}
+
+.containeer{
+  font-family: "Times New Roman", Times, serif;
 }
 
 .description-label{
@@ -73,3 +101,8 @@ label {
     cursor: pointer;
   }
   
+
+#logo{
+  border-radius: 25%;
+  
+}

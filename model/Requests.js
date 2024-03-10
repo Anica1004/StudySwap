@@ -1,4 +1,6 @@
-const admin = require('firebase-admin');
+const admin = require('../firebase');
+const { firestoreDb } = require('../firebase.js');
+
 
 class Request {
     constructor(email, wantToLearn) {
@@ -48,8 +50,22 @@ async function fetchAllRequests() {
     }
 }
 
-async function makeRequest(email, wantToLearn) {
-    new Request(email, wantToLearn);
+
+async function make_request(username, wantToLearn) {
+ 
+    const requestData = {
+        username: username,
+        wantToLearn: wantToLearn,
+      };
+   
+      try {
+        const docRef = firestoreDb.collection('requests').doc(username);
+        let dataUpdated = await docRef.set(requestData);
+        console.log(dataUpdated);
+
+        } catch (error) {
+        console.log(error);
+    }
 }
 
-module.exports = { Request, fetchAllRequests, makeRequest };
+module.exports = { Request, fetchAllRequests, make_request };

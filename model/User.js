@@ -1,15 +1,21 @@
-const admin = require('firebase-admin');
+const { firestoreDb } = require('../firebase.js');
+const { randomUUID } = require('crypto');
+const { uploadProcessedData } = require('../firebase');
+const { v4: uuidv4 } = require('uuid');
+const admin = require('../firebase');
+
 
 class User {
-    constructor(email, username, password, canTeach, wantToLearn, volunteer, inPerson, online) {
-        this.email = email;
-        this.username = username;
+    constructor(email, username, name, password, canTeach, wantToLearn, volunteer, inPerson, online) {
+        this.username = username; // registration / login
+        this.name = name;
+        this.email = email; // registration / login
         this.password = password;
-        this.canTeach = canTeach;
-        this.wantToLearn = wantToLearn;
-        this.volunteer = volunteer;
-        this.inPerson = inPerson;
-        this.online = online;
+        this.canTeach = canTeach; // array of courses
+        this.wantToLearn = wantToLearn; // array of courses
+        this.volunteer = volunteer; // boolean
+        this.inPerson = inPerson; // boolean
+        this.online = online; // boolean
     }
 
     static async fromSnapshot(snapshot) {
@@ -39,27 +45,86 @@ class User {
     }
 }
 
-async function newUser(email, password, canTeach, wantToLearn, volunteer, inPerson, online) {
-    // write to database :DDD
-    const usersCollection = admin.firestore().collection('users');
+async function make_user(email, password) {
+    let myuuid = uuidv4();
 
     const userData = {
+        username: myuuid,
         email: email,
         password: password,
+      };
+      console.log(myuuid);
+      try {
+        const docRef = firestoreDb.collection('users').doc(myuuid);
+        let dataUpdated = await docRef.set(userData);
+        console.log(dataUpdated);
+        return myuuid;
+
+        } catch (error) {
+        console.log(error);
+    }
+}
+
+async function login_user(email, password) {
+    const users = await fetchAllUsers(); // Await to get the users
+    
+    let foundUser = null;
+
+    for (const user of users) {
+        const found = await User.find({ email: user.email });
+        if (found && found.password === password) {
+            foundUser = found;
+            break; // Stop searching once a user is found
+        }
+    }
+
+    if (!foundUser) {
+        return "No user found with the provided email and password.";
+    } else {
+        return foundUser.username;
+    }
+}
+
+
+async function user_profile( username, canTeach, volunteer) {
+    const userData = {
         canTeach: canTeach,
-        wantToLearn: wantToLearn,
         volunteer: volunteer,
-        inPerson: inPerson,
-        online: online
+
       };
 
-      
+      try {
+        const docRef = firestoreDb.collection('users').doc(username);
+        let dataUpdated = await docRef.set(userData);
+        console.log(dataUpdated);
 
+        } catch (error) {
+        console.log(error);
+    }
 }
+
+async function user_request( username, canTeach, inPerson, online) {
+    const userData = {
+        canTeach: canTeach,
+        inPerson: inPerson,
+        online: online
+
+      };
+
+      try {
+        const docRef = firestoreDb.collection('users').doc(username);
+        let dataUpdated = await docRef.set(userData);
+        console.log(dataUpdated);
+
+        } catch (error) {
+        console.log(error);
+    }
+}
+
 
 async function fetchAllUsers() {
     try {
-        const usersCollection = admin.firestore().collection('users');
+        const usersCollection = firestoreDb.collection('users');
         const snapshot = await usersCollection.get();
         const allUsers = [];
 
@@ -75,4 +140,4 @@ async function fetchAllUsers() {
     }
 }
 
-module.exports = { User, fetchAllUsers };
+module.exports = { User, fetchAllUsers, make_user, user_request, user_profile, login_user };

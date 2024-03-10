@@ -1,25 +1,52 @@
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #88CCEE; /*color blind friendly*/
+  margin-bottom: 20px; 
+}
+
+nav img {
+  width: 50px;
+  height: auto;
+  margin-right: 20px; 
+}
+
 nav ul {
-    list-style-type: none;
-    background-color: rgb(129, 207, 224);
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 nav ul li {
-    display: inline-block;
-    position: relative; 
+  margin-right: 20px; 
+}
+
+nav ul li:last-child {
+  margin-right: 0; 
 }
 
 nav ul li a {
-    display: block;
-    padding: 15px 30px;
-    color: #fff;
-    text-decoration: none;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 10px; 
 }
-nav ul li:hover{
-    background-color: rgb(197, 239, 247); 
-    
+
+nav ul li:hover {
+  background-color: #A1DEFD; /*color blind friendly*/
 }
+
+#login {
+  margin-left: 550px; 
+ 
+}
+
+
+/*End of Navigation*/
 
 .clearfix {
     margin-top: 20px;
@@ -132,4 +159,167 @@ button:hover {
     margin: 5px;
 }
 
+button {
+  background-color: #4c81c2;
+  text-align: center;
+}
 
+
+.main-img-container {
+  /* width: 600px; /* Desired width */
+  max-height: 500px; /* Maximum height */
+  overflow: hidden; /* Hide overflow if image exceeds container */
+  align-items: center;
+  justify-content:center;
+  display: flex; 
+}
+
+.main-img {
+  max-width: 100%; /* Ensure the image takes up full width of container */
+  height: auto; /* Automatically adjust height to maintain aspect ratio */
+  align-items: center;
+  justify-content:center;
+  display: flex;
+}
+
+.parallax {
+  /* The image used */
+  background-image: url("images/studying.jpg");
+
+  /* Set a specific height */
+  min-height: 400px; 
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+#studySwap{
+  font-family: Snell Roundhand, cursive;
+  text-align: center;
+  font-size: 60px; 
+  padding-bottom: 25px;
+  padding-top: 50px; 
+  background-color: transparent;
+  text-shadow: 2px 2px 5px white;
+}
+  
+#aboutus{
+  background-color: transparent;
+  text-shadow: 2px 2px 5px #d9e4ff;
+}
+
+#logo{
+  border-radius: 25%;
+  
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.about {
+  flex: 1;
+  margin-right: 10px;
+
+}
+
+.about-body {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.about p{
+  color: #000000;
+  z-index: 2;
+  margin-bottom: 20px;
+  margin-left: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 100px; 
+}
+
+.overlay-box {
+  position: absolute; 
+  top: calc(100% - 8%); 
+  left: 0;
+  width: 100%; 
+  height: 8%; 
+  opacity: 0.5; 
+  background-color: #606ff3; 
+  z-index: 1; 
+  border: 5px solid #054fb9; 
+  margin-bottom: 0px; 
+  padding-bottom: 20px;
+  margin-top: 75px; 
+}
+
+.about-body p.slide-up {
+  font-size: 20px;
+}
+
+.slide-up b{
+  background-color: #c3deff;
+  color: black;
+}
+
+.image-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: 55%;
+  top:78%;
+  
+}
+
+
+.heading > div {
+  animation-delay: 0;
+}
+
+.heading > div:nth-child(2) > p {
+  animation-delay: 0.5s;
+}
+
+.heading > div:nth-child(3) > p {
+  animation-delay: 0.9s;
+}
+
+.heading > div:nth-child(4) > p {
+  animation-delay: 1.3s;
+}
+
+
+
+/* CSS for slide-up animation */
+.slide-up {
+  animation: slide-up 2s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+/* Keyframes for the slide-up animation */
+@keyframes slide-up {
+  0% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+#exchangeStudent{
+  margin-top: 200px;
+  width: 400px; 
+  height: 500px;  
+
+}
+
+#ubcIcon{
+ width: 300px; 
+ height: 200px; 
+ margin-top: 550px; 
+ margin-right: 1000px; 
+}

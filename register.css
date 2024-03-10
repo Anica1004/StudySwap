@@ -1,25 +1,49 @@
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #88CCEE; /*color blind friendly*/
+  margin-bottom: 20px; 
+}
+
+nav img {
+  width: 50px;
+  height: auto;
+  margin-right: 20px; 
+}
+
 nav ul {
-    list-style-type: none;
-    background-color: rgb(129, 207, 224);
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 nav ul li {
-    display: inline-block;
-    position: relative; 
+  margin-right: 20px; 
+}
+
+nav ul li:last-child {
+  margin-right: 0; 
 }
 
 nav ul li a {
-    display: block;
-    padding: 15px 30px;
-    color: #fff;
-    text-decoration: none;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 10px; 
 }
-nav ul li:hover{
-    background-color: rgb(197, 239, 247); 
-    
+
+nav ul li:hover {
+  background-color: #A1DEFD; /*color blind friendly*/
 }
+
+#login {
+  margin-left: 550px; 
+}
+
 
 * {box-sizing: border-box}
 
@@ -51,7 +75,7 @@ hr {
 
 /* Set a style for the submit/register button */
 .registerbtn {
-  background-color: #04AA6D;
+  background-color: #43cc8b;
   color: rgb(255, 255, 255);
   padding: 16px 20px;
   margin: 8px 0;
@@ -62,7 +86,7 @@ hr {
 }
 
 .cancelbtn {
-    background-color: #ffb7b7;
+    background-color: #f9bce2;
     color: #fff;
     padding: 16px 20px;
     margin: 8px 0;
@@ -84,3 +108,67 @@ a {
 .cancelbtn:hover {
     opacity:1;
 }
+
+.main-img-container h1 {
+  position: relative;
+  font-size: 50px;
+  bottom: 1%;
+  left: 5%;
+}
+
+.main-img-container p {
+  position:relative;
+  font-size: 25px;
+  bottom: 300px;
+  left: 16px;
+}
+
+.main-img-container{
+  position: relative;
+  width: 70%;
+  margin-bottom: 20px;
+  overflow-x: auto; /* Allow horizontal overflow */
+  white-space: nowrap; /* Prevent line breaks */
+}
+
+.main-img-container img {
+  display: block;
+  max-width: 100%;
+  max-height:100%;
+  text-align: center;
+  z-index: 0;
+ 
+}
+
+.register-form {
+  position:relative;
+  /* bottom: -s400px; */
+  z-index: 1;
+}
+
+.overlay-box {
+  position: absolute;
+  top: 65%;
+  left: 0;
+  width: 58%;
+  height: 30%;
+  opacity: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  border: 3px solid white;
+  margin-left: 10px; 
+}
+
+.text-overlay {
+  position: absolute;
+  top: 78%; /* Adjust as needed */
+  left: 20%; /* Adjust as needed */
+  transform: translate(-50%, -50%);
+  color: white; /* Set text color */
+  z-index: 1;
+  margin-bottom: 10px;
+  margin-left: 60px; 
+}
+
+
+

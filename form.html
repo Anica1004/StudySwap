@@ -11,16 +11,18 @@
 </head>
 <body>
     <nav>
+        <img src="images/logo.png" alt="Your Logo" id = "logo">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Form</a></li>
-            <li><a href="#">My Account</a>
-            <li><a href="#">Resources</a>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="form.html">Form</a></li>
+            <li><a href="profile.html">My Account</a>
+            <li><a href="resources.html">Resources</a>
+            <li id="login"><a href="login.html">Login</a></li>
         </ul>
     </nav>
 
     <h2>Find Tutor Match</h2>
-    <form id="myForm" action="/action_page.php" method="post">
+    <form id="myForm" action="/action_page.php" method="post" onSubmit= "return makeForm()">
          
         <label class="description-label">Select the Course You Need Help With: </label>
         <br>
@@ -46,5 +48,6 @@
       </form>
 
       <script src="form.js"></script>
+      <script src="sendData.js"></script>
 </body>
 </html>

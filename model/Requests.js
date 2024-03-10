@@ -48,8 +48,8 @@ async function fetchAllRequests() {
     }
 }
 
-async function makeRequest(email, wantToLearn) {
+async function make_request(email, wantToLearn) {
     new Request(email, wantToLearn);
 }
 
-module.exports = { Request, fetchAllRequests, makeRequest };
+module.exports = { Request, fetchAllRequests, make_request };

@@ -54,12 +54,11 @@ initializeFirebaseApp();
 
 const uploadProcessedData = async () => {
     const dataToUpload = {
-        canTeach: 'this',
-        email: 'jane@email.com',
+        canTeach: 'CPSC110',
         inPerson: true,
         online: true,
-        password: 'password',
-        volunteer: true,
+        password: 'newPassword',
+        volunteer: false,
         wantToLearn: 'that'
     };
     try {

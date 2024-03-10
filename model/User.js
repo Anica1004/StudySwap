@@ -1,15 +1,17 @@
+const { randomUUID } = require('crypto');
 const admin = require('firebase-admin');
+const { uploadProcessedData } = require('./firebase');
+import {v4 as uuidv4} from 'uuid';
 
 class User {
     constructor(email, username, password, canTeach, wantToLearn, volunteer, inPerson, online) {
         this.email = email;
-        this.username = username;
         this.password = password;
-        this.canTeach = canTeach;
-        this.wantToLearn = wantToLearn;
-        this.volunteer = volunteer;
-        this.inPerson = inPerson;
-        this.online = online;
+        this.canTeach = canTeach; // array of courses
+        this.wantToLearn = wantToLearn; // array of courses
+        this.volunteer = volunteer; // boolean
+        this.inPerson = inPerson; // boolean
+        this.online = online; // boolean
     }
 
     static async fromSnapshot(snapshot) {
@@ -39,13 +41,28 @@ class User {
     }
 }
 
-async function newUser(email, password, canTeach, wantToLearn, volunteer, inPerson, online) {
-    // write to database :DDD
-    const usersCollection = admin.firestore().collection('users');
+async function make_user(email, password) {
+    let myuuid = uuidv4();
 
     const userData = {
+        uuid: myuuid,
         email: email,
         password: password,
+      };
+
+      try {
+        const docRef = firestoreDb.collection('users').doc(myuuid);
+        let dataUpdated = await docRef.set(userData);
+        console.log(dataUpdated);
+        return userData.uuid;
+        } catch (error) {
+        console.log(error);
+    }
+
+}
+
+async function update_user( username, canTeach, wantToLearn, volunteer, inPerson, online) {
+    const userData = {
         canTeach: canTeach,
         wantToLearn: wantToLearn,
         volunteer: volunteer,
@@ -53,6 +70,14 @@ async function newUser(email, password, canTeach, wantToLearn, volunteer, inPers
         online: online
       };
 
+      try {
+        const docRef = firestoreDb.collection('users').doc(username);
+        let dataUpdated = await docRef.set(userData);
+        console.log(dataUpdated);
+        return userData.uuid;
+        } catch (error) {
+        console.log(error);
+    }
       
 
 }
@@ -75,4 +100,4 @@ async function fetchAllUsers() {
     }
 }
 
-module.exports = { User, fetchAllUsers };
+module.exports = { User, fetchAllUsers, make_user, update_user };

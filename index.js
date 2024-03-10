@@ -3,7 +3,29 @@ const mongoose = require('mongoose');
 const app = express();              //Instantiate an express app, the main work horse of this server
 const port = 3000;                  //Save the port number where your server will be listening
 
-mongoose.connect('mongodb://localhost/peertutor');
+// mongoose.connect('mongodb://localhost/peertutor');
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCndeft3ObHmXX7FDhJha0R3i240Dsxi4A",
+  authDomain: "peertutor-c0292.firebaseapp.com",
+  projectId: "peertutor-c0292",
+  storageBucket: "peertutor-c0292.appspot.com",
+  messagingSenderId: "440486577624",
+  appId: "1:440486577624:web:24ebc1dbf333e244911ead",
+  measurementId: "G-QSMCJVPTLR"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 //Idiomatic expression in express to route and respond to a client request
 app.get('/', (req, res) => {        //get requests to the root ("/") will route here

@@ -25,14 +25,14 @@
 
 
     <div class="center wrapper" div>
-        <form action="">
+        <form onSubmit="return loginUser()">
           <h1>Login</h1>
           <div class="input-box">
-            <input type="text" placeholder="Username"
+            <input type="text" id = "userEmail" placeholder="Email"
             required>
           </div>
           <div class="input-box">
-            <input type="password"
+            <input type="password" id = "password"
             placeholder="Password" required>
           </div>
           <div class="remember-forgot">
@@ -47,6 +47,6 @@
           </div>
         </form>
         </div>
-    
+        <script src="sendData.js"></script>
 </body>
 </html>

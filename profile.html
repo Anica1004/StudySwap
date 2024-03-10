@@ -29,6 +29,7 @@
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" id="email">
+        
         </div class = "form-tutor">
             <br>
             <label class="description-label">Will you be applying as a volunteer or an exchange tutor?: </label>    
@@ -39,7 +40,7 @@
         <input type= "checkbox" name = "exchange" id = "exchange" value = "exchange">
         <br>
         <br>
-        </div>
+       
 
         <div class="form-tutor" id = "courseSelection">
             <label class="description-label">Please select all courses in which you are knowledgeable and capable of instructing: </label>
@@ -53,22 +54,19 @@
         <button onclick="addCourse()">Add Course</button>
         <div id="tagsContainer"></div>
         </div>
-        
-
         <div class="form-group">
-            
         </div>
-
-
         <div class="form-group">
             <button onclick="saveProfile()">Save Profile</button>
         </div>
+    </div>
     </div>
     <div id="profileInfo" style="display: none;">
         <div class="profile-info">
             <p><strong>Name:</strong> <span id="profileName"></span></p>
             <p><strong>Email:</strong> <span id="profileEmail"></span></p>
             <p><strong>Status:</strong> <span id="status"></span></p>
+            <p><strong>courses:</strong> <span id="courses"></span></p>
             <button onclick="editProfile()">Edit Profile</button>
         </div>
     </div>

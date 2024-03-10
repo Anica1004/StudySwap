@@ -13,30 +13,6 @@ function bothCheckedAlert() {
 }
 
 
-function saveProfile() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var volunteer_checkbox = document.getElementById("volunteer");
-    var exchange_checkbox = document.getElementById("exchange");
-
-    document.getElementById("profileName").innerText = name;
-    document.getElementById("profileEmail").innerText = email;
-    if(volunteer_checkbox.checked){
-    document.getElementById("status").innerText = "Volunteer"; 
-    }else if (exchange_checkbox.checked){
-        document.getElementById("status").innerText = "Exchange"; 
-    }else{
-        document.getElementById("status").innerText = "Unknown"; 
-    }
-    document.getElementById("profileForm").style.display = "none";
-    document.getElementById("profileInfo").style.display = "block";
-}
-
-function editProfile() {
-    document.getElementById("profileForm").style.display = "block";
-    document.getElementById("profileInfo").style.display = "none";
-}
-
 
 
 
@@ -81,16 +57,107 @@ var courses = [
 
   function addCourse() {
     var selectElementName = document.getElementById("courseName");
-    var selectElementNum = document.getElementById("courseCode")
     var selectedName = selectElementName.options[selectElementName.selectedIndex].text;
-    var selectedValue = selectElementNum.innerText;
-    var tagsContainer = document.getElementById("tagsContainer");
-    var tag = document.createElement("div");
-    tag.classList.add("tag");
-    tag.textContent = selectedName + " " + selectedValue;
-    tag.onclick = function() {
-        this.remove();
-    };
-    tagsContainer.appendChild(tag);
+    var selectElementNum = document.getElementById("courseCode");
+    var selectedValue = selectElementNum.value;
+
+    if (selectedName && selectedValue) {
+        var tag = document.createElement("div");
+        tag.classList.add("tag");
+        tag.textContent = selectedName + " " + selectedValue;
+        tag.onclick = function() {
+            tag.remove();
+        };
+        document.getElementById("tagsContainer").appendChild(tag);
+    } else {
+        alert("Please select a course and enter a course code.");
+    }
 }
 
+
+
+
+
+
+function saveProfile() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var volunteer_checkbox = document.getElementById("volunteer");
+    var exchange_checkbox = document.getElementById("exchange");
+
+    document.getElementById("profileName").innerText = name;
+    document.getElementById("profileEmail").innerText = email;
+    if(volunteer_checkbox.checked){
+    document.getElementById("status").innerText = "Volunteer"; 
+    }else if (exchange_checkbox.checked){
+        document.getElementById("status").innerText = "Exchange"; 
+    }else{
+        document.getElementById("status").innerText = "Unknown"; 
+    }
+
+    var selectedCourses = [];
+    var tagsContainer = document.getElementById("tagsContainer");
+    var tags = tagsContainer.getElementsByClassName("tag");
+    for (var i = 0; i < tags.length; i++) {
+        var courseText = tags[i].textContent.trim();
+        var spaceIndex = courseText.lastIndexOf(" ");
+        var courseName = courseText.substring(0, spaceIndex);
+        var courseCode = courseText.substring(spaceIndex + 1);
+        selectedCourses.push({ name: courseName, code: courseCode });
+    }
+
+    displaySelectedCourses(selectedCourses);
+    
+
+
+
+    document.getElementById("profileForm").style.display = "none";
+    document.getElementById("profileInfo").style.display = "block";
+}
+
+function displaySelectedCourses(courses) {
+    var selectedCoursesDiv = document.getElementById("selectedCourses");
+    selectedCoursesDiv.innerHTML = ""; // Clear previous courses
+
+    if (courses.length === 0) {
+        selectedCoursesDiv.innerHTML = "<p>No courses selected</p>";
+    } else {
+        courses.forEach(function(course) {
+            var courseDiv = document.createElement("div");
+            courseDiv.textContent = course.name + " " + course.code;
+            selectedCoursesDiv.appendChild(courseDiv);
+        });
+    }
+}
+
+function editProfile() {
+    document.getElementById("profileForm").style.display = "block";
+    document.getElementById("profileInfo").style.display = "none";
+}
+
+
+
+
+function saveProfile() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var volunteer_checkbox = document.getElementById("volunteer");
+    var exchange_checkbox = document.getElementById("exchange");
+
+    document.getElementById("profileName").innerText = name;
+    document.getElementById("profileEmail").innerText = email;
+    if(volunteer_checkbox.checked){
+    document.getElementById("status").innerText = "Volunteer"; 
+    }else if (exchange_checkbox.checked){
+        document.getElementById("status").innerText = "Exchange"; 
+    }else{
+        document.getElementById("status").innerText = "Unknown"; 
+    }
+    document.getElementById("profileForm").style.display = "none";
+    document.getElementById("profileInfo").style.display = "block";
+}
+
+function editProfile() {
+    document.getElementById("profileForm").style.display = "block";
+    document.getElementById("profileInfo").style.display = "none";
+}

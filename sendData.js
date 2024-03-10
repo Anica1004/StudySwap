@@ -50,7 +50,7 @@ async function postData(url = "", data = {}) {
   {
     var email = document.getElementById("userEmail").value;
     var password = document.getElementById("password").value;
-        postData("http://localhost:3001/login_user", { email: email, password: password }).then((data) => {
+        postData("http://localhost:3001/login_user", { username: username, email: email, password: password }).then((data) => {
             console.log(data); // JSON data parsed by `data.json()` call
             localStorage.setItem("username", data);
             username = localStorage.getItem("username"); 
@@ -61,12 +61,12 @@ async function postData(url = "", data = {}) {
   }
 
   function makeForm(event){
-    userName = "editLater" // edit this later 
+    
     var courseName = document.getElementById("courseName").value + document.getElementById("courseCode").value;
     var inperson = document.getElementById("inperson").checked; 
     var Online = document.getElementById("Online").checked; 
 
-    postData("http://localhost:3001/user_request", { username: userName, wantToLearn: courseName, inPerson: inperson, online: Online }).then((data) => {
+    postData("http://localhost:3001/user_request", { username: username, wantToLearn: courseName, inPerson: inperson, online: Online }).then((data) => {
       console.log(data); // JSON data parsed by `data.json()` call
     });
 return false; // prevent further bubbling of event

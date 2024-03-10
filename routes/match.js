@@ -1,24 +1,9 @@
 const express = require('express');
 const { make_request } = require('../model/requests');
-const { findMatchingTutors } = require('../service/userService');
-const { make_user, user_profile, user_request } = require('../model/user');
+const { findMatchingTutors, sendEmailNotif } = require('../service/userService');
+const { make_user, user_profile, user_request, login_user } = require('../model/user');
 const router = express(); 
-//const cors = require("cors");
 router.use(express.json()); 
-
-//router.use(cors);
-
-// const corsOptions ={
-//     origin: "http://127.0.0.1:5500/",
-//     optionsSuccessStatus: 200
-// }
-
-// router.options("/*", async (req, res)=> {
-//     console.log("AHHHHHHHHHHHH");
-//     res.header = {
-//         "Access-Control-Allow-Origin": "*"
-//     }
-// });
 
 router.get('/make_request', async (req, res) => {
     username = req.query.username;
@@ -27,6 +12,7 @@ router.get('/make_request', async (req, res) => {
         make_request(username, wantToLearn);
         const arry = findMatchingTutors();
         console.log(arry);
+        sendEmailNotif(arry);
         res.status(201).send(); // Send a 201 Created response with no content
     } catch (error) {
         console.error('Error adding request to database:', error);
@@ -66,16 +52,13 @@ router.get('/login_user', async (req, res) => {
 
 
 
-router.post('/user_profile', async (req, res) => {
-    const username = req.body.username;
-    const name = req.body.name;
-    const canTeach = req.body.canTeach;
-    const wantToLearn = req.body.wantToLearn;
-    const volunteer = req.body.volunteer;
-
+router.get('/user_profile', async (req, res) => {
+    const username = req.query.username;
+    const canTeach = req.query.canTeach;
+    const wantToLearn = req.query.wantToLearn;
 
     try {
-        update_user(username, canTeach, wantToLearn, volunteer);
+        user_profile(username, canTeach, wantToLearn);
         res.status(201).send(); // Send a 201 Created response with no content
     } catch (error) {
         console.error('Error updating user to database:', error);
@@ -84,14 +67,14 @@ router.post('/user_profile', async (req, res) => {
 });
 
 
-router.post('/user_request', async (req, res) => {
-    const username = req.body.username;
-    const wantToLearn = req.body.wantToLearn;
-    const inPerson = req.body.inPerson;
-    const online = req.body.online;
+router.get('/user_request', async (req, res) => {
+    const username = req.query.username;
+    const wantToLearn = req.query.wantToLearn;
+    const inPerson = req.query.inPerson;
+    const online = req.query.online;
 
     try {
-        update_user(username, canTeach, wantToLearn, volunteer, inPerson, online);
+        user_request(username, canTeach, wantToLearn, volunteer, inPerson, online);
         res.status(201).send(); // Send a 201 Created response with no content
     } catch (error) {
         console.error('Error updating user to database:', error);

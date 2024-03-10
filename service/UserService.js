@@ -1,5 +1,6 @@
 const { fetchAllUsers } = require('../model/user');
 const { fetchAllRequests } = require('../model/requests');
+const nodemailer = require('nodemailer');
 
 async function findMatchingTutors() {
     try {
@@ -31,5 +32,38 @@ async function findMatchingTutors() {
     }
 }
 
+// Create a transporter object using SMTP transport
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'hackathoncmd@gmail.com',
+        pass: 'helloWorld'
+    }
+});
 
-module.exports = findMatchingTutors;
+async function sendEmailNotif(matches) {
+    for (const match of matches) {
+        // Setup email data
+        const mailOptions = {
+            from: 'hackathoncmd@gmail.com',
+            to: match.user.email,
+            subject: 'Test Email',
+            text: match.potentialMentees
+        };
+
+        // Send email
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
+                console.error('Error occurred:', error);
+            } else {
+                console.log('Email sent:', info.response);
+            }
+        });
+     
+    }
+}
+
+
+module.exports =  {
+    findMatchingTutors, 
+sendEmailNotif};

@@ -6,8 +6,9 @@ const admin = require('../firebase');
 
 
 class User {
-    constructor(email, username, password, canTeach, wantToLearn, volunteer, inPerson, online) {
+    constructor(email, username, name, password, canTeach, wantToLearn, volunteer, inPerson, online) {
         this.username = username; // registration / login
+        this.name = name;
         this.email = email; // registration / login
         this.password = password;
         this.canTeach = canTeach; // array of courses
@@ -96,7 +97,7 @@ async function user_profile( username, canTeach, volunteer) {
         const docRef = firestoreDb.collection('users').doc(username);
         let dataUpdated = await docRef.set(userData);
         console.log(dataUpdated);
-        return userData.uuid;
+
         } catch (error) {
         console.log(error);
     }
@@ -114,7 +115,7 @@ async function user_request( username, canTeach, inPerson, online) {
         const docRef = firestoreDb.collection('users').doc(username);
         let dataUpdated = await docRef.set(userData);
         console.log(dataUpdated);
-        return userData.uuid;
+
         } catch (error) {
         console.log(error);
     }

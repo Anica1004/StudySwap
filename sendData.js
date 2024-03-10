@@ -36,6 +36,9 @@ async function postData(url = "", data = {}) {
     }else{
         postData("http://localhost:3001/make_user", { email, password }).then((data) => {
             console.log(data); // JSON data parsed by `data.json()` call
+            localStorage.setItem("username", data);
+            username = localStorage.getItem("username"); 
+            console.log(username);
           });
         alert("Registration Complete!");
     }

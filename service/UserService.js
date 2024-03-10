@@ -1,6 +1,5 @@
-import { fetchAllUsers } from './user';
-import { fetchAllRequests } from './requests';
-
+const { fetchAllUsers } = require('../model/user');
+const { fetchAllRequests } = require('../model/requests');
 
 async function findMatchingTutors() {
     try {
@@ -33,5 +32,4 @@ async function findMatchingTutors() {
 }
 
 
-
-export { findMatchingTutors };
+module.exports = findMatchingTutors;

@@ -1,11 +1,11 @@
-import express from 'express';
-import { make_request } from './userService';
-import { make_user } from './user';
-import { user_profile } from './user';
-import { user_request } from './user';
+const express = require('express');
+const { make_request } = require('../service/userService');
+const { make_user, user_profile, user_request } = require('../model/user');
+
+const router = express(); 
+router.use(express.json()); 
 
 
-const router = express.Router();
 
 router.post('/make_request', async (req, res) => {
     username = req.body.username;
@@ -21,16 +21,17 @@ router.post('/make_request', async (req, res) => {
 
 
 router.post('/make_user', async (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
-    try {
-        const user = await make_user(email, password);
+    console.log(req.body); 
+    // const email = req.body.email;
+    // const password = req.body.password;
+    // try {
+    //     const user = await make_user(email, password);
 
-        res.status(201).json({ username: user.username }); // Send the newly created user's username in the response
-    } catch (error) {
-        console.error('Error adding user to database:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
+    //     res.status(201).json({ username: user.username }); // Send the newly created user's username in the response
+    // } catch (error) {
+    //     console.error('Error adding user to database:', error);
+    //     res.status(500).json({ error: 'Internal server error' });
+    // }
 });
 
 
@@ -84,4 +85,4 @@ router.post('/user_request', async (req, res) => {
 });
 
 
-export default router;
+module.exports = router;

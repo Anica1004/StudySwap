@@ -1,8 +1,8 @@
+const { firestoreDb } = require('../firebase.js');
 const { randomUUID } = require('crypto');
-const admin = require('firebase-admin');
-const { uploadProcessedData } = require('./firebase');
-import {v4 as uuidv4} from 'uuid';
-const admin = require('./firebase');
+const { uploadProcessedData } = require('../firebase');
+const { v4: uuidv4 } = require('uuid');
+const admin = require('../firebase');
 
 
 class User {

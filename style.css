@@ -206,7 +206,10 @@ button {
   text-shadow: 2px 2px 5px white;
 }
   
-
+#aboutus{
+  background-color: transparent;
+  text-shadow: 2px 2px 5px #d9e4ff;
+}
 
 #logo{
   border-radius: 25%;
@@ -241,15 +244,15 @@ button {
 }
 
 .overlay-box {
-  position: absolute; /* Position the element absolutely */
-  top: calc(100% - 8%); /* Position the box 8% from the bottom of its parent */
-  left: 0; /* Align the box to the left edge of its parent */
-  width: 100%; /* Make the box span the full width of its parent */
-  height: 8%; /* Set the height of the box */
-  opacity: 0.5; /* Set the opacity to 50% */
-  background-color: #81c2de; /* Set the background color */
-  z-index: 1; /* Set a positive z-index to ensure the box appears above other content */
-  border: 5px solid black; /* Add a border to the box */
+  position: absolute; 
+  top: calc(100% - 8%); 
+  left: 0;
+  width: 100%; 
+  height: 8%; 
+  opacity: 0.5; 
+  background-color: #606ff3; 
+  z-index: 1; 
+  border: 5px solid #054fb9; 
   margin-bottom: 0px; 
   padding-bottom: 20px;
   margin-top: 75px; 

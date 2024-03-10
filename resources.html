@@ -33,6 +33,11 @@
           <img src="images/DSC_6009_02.jpg" alt="Norway" class="resource-picture">
           <div class="resource-text">
             <button class="title-btn" id="myButton" onclick="window.location.href='https://www.math.ubc.ca/undergraduate/advising-and-resources/drop-help'">Math Learning Centre (MLC)</button>
+            <audio controls>
+                <source src="MLC.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+
             <p class = "des" >Drop-in math help for undergraduate students</p>
           </div>
         </div>
@@ -40,6 +45,10 @@
             <img src="images/alma_mater_society_of_ubc_vancouver_logo.jpeg" alt="Norway" style="width: 200px;" class="resource-picture">
             <div class="resource-text">
                 <button class="title-btn" id="myButton" onclick="window.location.href='https://www.ams.ubc.ca/support-services/student-services/tutoring/group-tutoring/'">AMS Group Tutoring</button>
+                <audio controls>
+                    <source src="AMS.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
                 <p class = "des">Drop-in Group tutoring, in person at the UBC Nest</p>
             </div>
         </div>
@@ -48,9 +57,39 @@
                 <img src="images/edxImage.png" alt="Norway" style="width: 250px; margin-top:30px; margin-bottom:45px" class="resource-picture">
                 <div class="resource-text">
                     <button class="title-btn" id="myButton" onclick="window.location.href='https://www.edx.org/school/ubcx'">Free Online Courses</button>
+                    <audio controls>
+                        <source src="edX.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                      </audio>
                     <p  class = "des" style = "margin-left:30px">Free courses at UBC on Edx</p>
                 </div>
             </div>
     </div>
+
+
+    <script>
+    var sound = new Howl({
+        src: ['MLC.mp3']
+      });
+    
+      // Play the sound
+      sound.play();
+
+      var sound = new Howl({
+        src: ['AMS.mp3']
+      });
+    
+      // Play the sound
+      sound.play();
+
+      var sound = new Howl({
+        src: ['edX.mp3']
+      });
+    
+      // Play the sound
+      sound.play();
+      
+      
+      </script>
     </body>
 </head>

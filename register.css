@@ -75,7 +75,7 @@ hr {
 
 /* Set a style for the submit/register button */
 .registerbtn {
-  background-color: #04AA6D;
+  background-color: #43cc8b;
   color: rgb(255, 255, 255);
   padding: 16px 20px;
   margin: 8px 0;
@@ -86,7 +86,7 @@ hr {
 }
 
 .cancelbtn {
-    background-color: #ffb7b7;
+    background-color: #f9bce2;
     color: #fff;
     padding: 16px 20px;
     margin: 8px 0;
@@ -137,6 +137,7 @@ a {
   max-height:100%;
   text-align: center;
   z-index: 0;
+ 
 }
 
 .register-form {
@@ -149,12 +150,13 @@ a {
   position: absolute;
   top: 65%;
   left: 0;
-  width: 50%;
+  width: 58%;
   height: 30%;
   opacity: 100;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 0;
   border: 3px solid white;
+  margin-left: 10px; 
 }
 
 .text-overlay {
@@ -165,6 +167,7 @@ a {
   color: white; /* Set text color */
   z-index: 1;
   margin-bottom: 10px;
+  margin-left: 60px; 
 }
 
 

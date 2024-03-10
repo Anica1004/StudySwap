@@ -45,6 +45,9 @@
         <div class="form-tutor" id = "courseSelection">
             <label class="description-label">Please select all courses in which you are knowledgeable and capable of instructing: </label>
             <br>
+            <label class="description-label" id = "smallLabel">(click on the course to delete added courses) </label>   
+            <br>
+            <br>
             <label for="courseName">Select a Course Name:</label>
             <select id="courseName" name="courseName">
               <option value="" disabled selected>Select a course</option>
@@ -67,7 +70,7 @@
             <p><strong>Email:</strong> <span id="profileEmail"></span></p>
             <p><strong>Status:</strong> <span id="status"></span></p>
             <div class="form-group" id="selectedCoursesSection">
-                <label for="selectedCourses">Selected Courses:</label>
+                <label for="selectedCourses">Selected Courses Eligible to Tutor:</label>
                 <div id="selectedCourses"></div>
             </div>
             <button onclick="editProfile()">Edit Profile</button>

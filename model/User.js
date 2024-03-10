@@ -52,34 +52,35 @@ async function make_user(email, password) {
         email: email,
         password: password,
       };
-
+      console.log(myuuid);
       try {
         const docRef = firestoreDb.collection('users').doc(myuuid);
         let dataUpdated = await docRef.set(userData);
         console.log(dataUpdated);
-        return userData.uuid;
+        return myuuid;
+
         } catch (error) {
         console.log(error);
     }
 }
 
-async function login_user (email, password) {
-
-    const users = fetchAllUsers();
+async function login_user(email, password) {
+    const users = await fetchAllUsers(); // Await to get the users
+    
+    let foundUser = null;
 
     for (const user of users) {
-        const user = await User.find({ email: user.email });
-        
+        const found = await User.find({ email: user.email });
+        if (found && found.password === password) {
+            foundUser = found;
+            break; // Stop searching once a user is found
+        }
     }
 
-
-      try {
-        const docRef = firestoreDb.collection('users').doc(myuuid);
-        let dataUpdated = await docRef.set(userData);
-        console.log(dataUpdated);
-        return userData.uuid;
-        } catch (error) {
-        console.log(error);
+    if (!foundUser) {
+        return "No user found with the provided email and password.";
+    } else {
+        return foundUser.username;
     }
 }
 

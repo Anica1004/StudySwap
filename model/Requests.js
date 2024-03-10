@@ -48,8 +48,22 @@ async function fetchAllRequests() {
     }
 }
 
-async function make_request(email, wantToLearn) {
-    new Request(email, wantToLearn);
+
+async function make_request(username, wantToLearn) {
+ 
+    const requestData = {
+        username: username,
+        wantToLearn: wantToLearn,
+      };
+   
+      try {
+        const docRef = firestoreDb.collection('requests').doc(username);
+        let dataUpdated = await docRef.set(requestData);
+        console.log(dataUpdated);
+
+        } catch (error) {
+        console.log(error);
+    }
 }
 
 module.exports = { Request, fetchAllRequests, make_request };

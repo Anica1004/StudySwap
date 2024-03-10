@@ -78,5 +78,7 @@ const getFirebaseApp = () => app;
 module.exports = {
     initializeFirebaseApp,
     getFirebaseApp,
-    uploadProcessedData
+    uploadProcessedData,
+    firestoreDb
+
 };

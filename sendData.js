@@ -4,22 +4,21 @@ async function postData(url = "", data = {}) {
     // Default options are marked with *
   
     console.log(JSON.stringify(data));
-    const response = await fetch(url, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
-    });
+    const response = await fetch(url + "?"+ new URLSearchParams(data) 
+    //   method: "GET", // *GET, POST, PUT, DELETE, etc.
+    //   //mode: "no-cors",
+    //   headers: {
+    //     //"Accept": "application/json",
+
+    //     "Content-Type": "application/json",
+    //     // 'Content-Type': 'application/x-www-form-urlencoded',
+    //   },
+    //   body: JSON.stringify(data), // body data type must match "Content-Type" header
+     );
     return response.json(); // parses JSON response into native JavaScript objects
     
   }
   
-  postData("http://localhost:3001/make_user", { answer: 42 }).then((data) => {
-    console.log(data); // JSON data parsed by `data.json()` call
-  });
-
 
   function registerUser(event)
   {
@@ -28,18 +27,19 @@ async function postData(url = "", data = {}) {
     var email = document.getElementById("userEmail").value;
 
     console.log(password, repeatPassword); 
-    if (password !== repeatPassword){
-        alert("Password does not match! Try Again!");
-    }else{
-        postData("http://localhost:3001/make_user", { email: email, password: password }).then((data) => {
+    // if (password !== repeatPassword){
+    //     alert("Password does not match! Try Again!");
+    // }else{
+      var data = { email: email, password: password };
+        postData("http://localhost:3001/make_user", data).then((data) => {
             console.log(data); // JSON data parsed by `data.json()` call
-            localStorage.setItem("username", data);
+            localStorage.setItem("username", data.username);
             //localStorage.setItem("username", data.username)
             username = localStorage.getItem("username"); 
             console.log(username);
           });
         alert("Registration Complete!");
-    }
+    // }
 
     return false; // prevent further bubbling of event
   }

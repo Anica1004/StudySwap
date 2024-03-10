@@ -23,6 +23,7 @@
     </nav>
     
 <div class="container">
+   
     <h1>User Profile</h1>
     <div id="profileForm">
         <div class="form-group">
@@ -46,7 +47,6 @@
         <br>
         <br>
        
-
         <div class="form-tutor" id = "courseSelection">
             <label class="description-label">Please select all courses in which you are knowledgeable and capable of instructing: </label>
             <br>
@@ -59,7 +59,7 @@
             </select>
             <label for = "courseCode">Course Code: </label>
         <input type= "value" name = "courseCode" id = "courseCode">
-        <button onclick="addCourse()">Add Course</button>
+        <button onclick="addCourse(); profileUser()">Add Course</button>
         <div id="tagsContainer"></div>
         </div>
         <div class="form-group">
@@ -81,10 +81,12 @@
             <button onclick="editProfile()">Edit Profile</button>
         </div>
     </div>
+
 </div>
 
 
 <script src="profile.js"></script>
+<script src="sendData.js"></script>
     
 </body>
 </html>

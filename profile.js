@@ -1,8 +1,10 @@
+//const profileUser = require("./sendData.js"); 
 var volunteer_checkbox = document.getElementById("volunteer");
 var exchange_checkbox = document.getElementById("exchange");
 
 volunteer_checkbox.addEventListener("change", bothCheckedAlert);
 exchange_checkbox.addEventListener("change", bothCheckedAlert);
+
 
 function bothCheckedAlert() {
   if (volunteer_checkbox.checked && exchange_checkbox.checked) {
@@ -64,7 +66,7 @@ var courses = [
     if (selectedName && selectedValue) {
         var tag = document.createElement("div");
         tag.classList.add("tag");
-        tag.textContent = selectedName + " " + selectedValue;
+        tag.textContent = selectedName + selectedValue;
         tag.onclick = function() {
             tag.remove();
         };
@@ -77,14 +79,12 @@ var courses = [
 
 
 
-
-
 function saveProfile() {
+    //profileUser();
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
     var volunteer_checkbox = document.getElementById("volunteer");
     var exchange_checkbox = document.getElementById("exchange");
-
     document.getElementById("profileName").innerText = name;
     document.getElementById("profileEmail").innerText = email;
     if(volunteer_checkbox.checked){

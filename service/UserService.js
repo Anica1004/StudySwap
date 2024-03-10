@@ -42,7 +42,7 @@ const transporter = nodemailer.createTransport({
 });
 
 async function sendEmailNotif(matches) {
-    const { mentor, mentees } = match;
+    const { mentor, mentees } = matches;
     
     for (const match of matches) {
         const { mentor, mentees } = match;
